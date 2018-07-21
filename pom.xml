@@ -12,12 +12,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <maven.surefire.version>2.22.0</maven.surefire.version>
         <junit.platform.version>1.2.0</junit.platform.version>
         <junit.jupiter.version>5.2.0</junit.jupiter.version>
         <plugin.pitest.version>1.4.0</plugin.pitest.version>
         <plugin.junit5.pitest.version>0.5</plugin.junit5.pitest.version>
         <plugin.maven.compile.version>3.7.0</plugin.maven.compile.version>
-        <spring.boot.version>2.0.3.RELEASE</spring.boot.version> <!-- need this for submodules -->
+        <spring.boot.version>2.0.3.RELEASE</spring.boot.version>
     </properties>
 
     <dependencies>
@@ -136,6 +137,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>some test to exclude here</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
