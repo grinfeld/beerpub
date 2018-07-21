@@ -1,5 +1,3 @@
-
-
 buildscript {
     repositories {
         mavenCentral()
@@ -16,26 +14,33 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'maven'
 
-bootJar {
-    baseName = 'beer-pub'
-    version =  '0.0.1-SNAPSHOT'
-    mainClassName = "BeerApp"
+group = 'com.solaredge.mikhail'
+version = '0.0.1-SNAPSHOT'
+
+description = "Example"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.3.RELEASE')
 
     compileOnly ('org.projectlombok:lombok')
 
     testCompile ('org.springframework.boot:spring-boot-starter-test')
     testCompile ("org.junit.jupiter:junit-jupiter-api")
     testRuntime ("org.junit.jupiter:junit-jupiter-engine")
+    testRuntime ("org.junit.vintage:junit-vintage-engine")
+    testRuntime ("org.junit.platform:junit-platform-launcher:5.2.0")
+    testRuntime ("org.junit.platform:junit-platform-runner:5.2.0")
     testCompile ("org.assertj:assertj-core")
 }
